@@ -39,23 +39,22 @@ public class FormattedDateParameterPropertiesProvider extends AbstractBuildParam
         if (build.getParametersProvider() != null){
             timestampFormat = build.getParametersProvider().get("build.timestamp.format");
             LOG.debug("Timestamp format provided by user: " + timestampFormat);
-			
-			// if no format provided, use good ol' ISO-1806
-			if (timestampFormat == null){
-				timestampFormat = "yyyy-MM-dd'T'HH:mmZ";
-			}
-		
-			LOG.debug("Timestamp format actually used: "+timestampFormat);
-		
-			// get the start date
-			Date buildStartDate = new Date(); 
-		
-			// format it
+            // if no format provided, use good ol' ISO-1806
+            if (timestampFormat == null){
+            	timestampFormat = "yyyy-MM-dd'T'HH:mmZ";
+            }
+            
+            LOG.debug("Timestamp format actually used: "+timestampFormat);
+            
+            // get the start date
+            Date buildStartDate = new Date(); 
+            
+            // format it
             String existingTimestamp = build.getParametersProvider().get("build.formatted.timestamp");
             LOG.debug("Existing timestamp parameter: " + existingTimestamp);
-			String formattedTimestamp = (existingTimestamp != null) ? existingTimestamp : (new SimpleDateFormat(timestampFormat)).format(buildStartDate);
-			LOG.debug(build + " : Formatted timestamp: " + formattedTimestamp);
-			newParams.put("build.formatted.timestamp", formattedTimestamp);
+            String formattedTimestamp = (existingTimestamp != null) ? existingTimestamp : (new SimpleDateFormat(timestampFormat)).format(buildStartDate);
+            LOG.debug(build + " : Formatted timestamp: " + formattedTimestamp);
+            newParams.put("build.formatted.timestamp", formattedTimestamp);
         } else {
             LOG.warn("build.getParametersProvider() returned null");
         }
