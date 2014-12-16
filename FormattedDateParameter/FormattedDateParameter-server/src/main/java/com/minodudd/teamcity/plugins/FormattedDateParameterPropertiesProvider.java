@@ -44,9 +44,9 @@ public class FormattedDateParameterPropertiesProvider extends AbstractBuildParam
 			if (timestampFormat == null){
 				timestampFormat = "yyyy-MM-dd'T'HH:mmZ";
 			}
-
+		
 			LOG.debug("Timestamp format actually used: "+timestampFormat);
-
+		
 			// get the start date
 			Date buildStartDate = new Date(); 
 		
